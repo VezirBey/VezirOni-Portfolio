@@ -1,0 +1,631 @@
+/*=============== GOOGLE FONTS ===============*/
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+/*=============== VARIABLES CSS ===============*/
+:root {
+  /*========== Colors ==========*/
+  /*Color mode HSL(hue, saturation, lightness)*/
+  /*
+      Blue: hsl(207, 90%, 61%)
+      Purple: hsl(250, 66%, 75%)
+      Pink: hsl(356, 66%, 75%)
+      Teal: hsl(174, 63%, 62%)
+  */
+
+  --hue: 4 ;
+  --sat: 90%;
+  --lig: 45%;
+  --first-color: hsl(var(--hue), var(--sat), var(--lig));
+  --first-color-alt: hsl(var(--hue), var(--sat), 57%); /* -4% */
+  --title-color: #000;
+  --text-color: rgba(0, 0, 0, 0.5);
+  --text-color-light: hsl(var(--hue), 8%, 75%);
+  --text-color-lighten:  rgba(0, 0, 0, .075);;
+  --body-color: #fff;
+  --container-color: #fff;
+
+  /*========== Font and typography ==========*/
+  /*.5rem = 8px | 1rem = 16px ...*/
+  --body-font: 'Quicksand', sans-serif;;
+  --h2-font-size: 1.25rem;
+  --h3-font-size: 1rem;
+  --normal-font-size: .938rem;
+  --small-font-size: .813rem;
+  --smaller-font-size: .75rem;
+}
+
+@media screen and (min-width: 968px) {
+  :root {
+    --h2-font-size: 1.5rem;
+    --h3-font-size: 1.25rem;
+    --normal-font-size: 1rem;
+    --small-font-size: .875rem;
+    --smaller-font-size: .813rem;
+  }
+}
+
+/*=============== BASE ===============*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  text-align: -webkit-center;
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  background-color: var(--body-color);
+  color: var(--text-color);
+  transition: .3s;
+}
+
+h1, h2, h3 {
+  color: var(--title-color);
+  font-weight: 600;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/*=============== THEME ===============*/
+
+.change-theme{
+  position: absolute;
+  top: 1.5rem;
+  right: 0;
+  font-size: 1.5rem;
+  color: var(--title-color);
+  cursor: pointer;
+  transition: .3s;
+}
+
+.change-theme:hover{
+  color: var(--first-color);
+}
+
+
+/*========== Variables Dark theme ==========*/
+
+body.dark-theme{
+  --title-color: #fff;
+  --text-color: rgba(255, 255, 255, 0.5);
+  --body-color: #0f0f0f;
+  --container-color:  rgba(255, 255, 255, 0.1);
+}
+
+
+/*========== 
+    Color changes in some parts of 
+    the website, in light theme
+==========*/
+
+.dark-theme .button__gray{
+  background-color: var(--container-color);
+}
+
+.dark-theme .button__gray:hover{
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.dark-theme .github{
+  color: #e3e5e6;
+}
+
+.dark-theme .github:hover{
+  color: #b8b9ba;
+}
+
+.dark-theme .filters__content{
+  background-color: var(--container-color);
+}
+
+.dark-theme::-webkit-scrollbar{
+  background-color: #0f0f0f;;
+}
+
+.dark-theme::-webkit-scrollbar-thumb{
+  background-color: #aaa;
+}
+
+.dark-theme::-webkit-scrollbar-thumb:hover{
+  background-color: #8c8b8b;
+}
+
+
+/*=============== REUSABLE CSS CLASSES ===============*/
+.container {
+  max-width: 968px;
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+}
+
+.grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+
+/*=============== PROFILE ===============*/
+
+.profile{
+  position: relative;
+  padding-top: 3.5rem;
+}
+
+.profile__container{
+  row-gap: 2rem;
+}
+
+.profile__data{
+  display: grid;
+  text-align: center;
+}
+
+.profile__perfil{
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(180deg, hsla(var(--hue), var(--sat), var(--lig), 1) 0%,
+  hsla(var(--hue), var(--sat), var(--lig), .2) 100%);
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.profile__border{
+  border: 3.5px solid var(--first-color);
+  justify-self: center;
+  width: 115px;
+  height: 115px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  margin-bottom: .75rem;
+}
+
+.profile__name{
+  font-size: var(--h2-font-size);
+}
+
+.profile_profession{
+  font-size: var(--smaller-font-size);
+  font-weight: 500;
+  color: var(--text-color);
+  margin-bottom: 1rem;
+}
+
+.profile__social{
+  display: flex;
+  justify-content: center;
+  column-gap: .75rem;
+}
+
+.profile__social-link{
+  font-size: 1.25rem;
+  color: var(--title-color);
+  transition: .3s;
+}
+
+.profile__info{
+  grid-template-columns: repeat(3, max-content);
+  justify-content: center;
+  column-gap: 2.5rem;
+}
+
+.profile__info-group{
+  text-align: center;
+}
+
+.profile__info-number{
+  font-size: var(--normal-font-size);
+  margin-bottom: .25rem;
+}
+
+.profile__info-description{
+  font-size: var(--smaller-font-size);
+  font-weight: 500;
+}
+
+.profile__buttons,
+.profile__buttons-small{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile__buttons{
+  column-gap: 1rem;
+}
+
+.profile__buttons-small{
+  column-gap: .25rem;
+}
+
+/*=============== BUTTONS ===============*/
+
+.button{
+  display: inline-flex;
+  align-items: center;
+  color: #fff;
+  column-gap: .5rem;
+  background-color: var(--first-color);
+  padding: 1.15rem 1.5rem;
+  border-radius: .5rem;
+  transition: .3s;
+  box-shadow: 0 8px 24px hsla(var(--hue), var(--sat), var(--lig), .25);
+}
+
+.buttons i {
+  font-size: 1.25rem;
+}
+
+.button:hover{
+  color: #fff;
+  background-color: #770E06;
+}
+
+.button__small{
+  padding: .75rem;
+  box-shadow: none;
+}
+
+.button__gray{
+  background-color: #e8eaeb;
+  color: var(--title-color);
+}
+
+.button__gray:hover{
+  background-color: #d9d9d9;
+}
+
+
+/*=============== FILTERS TABS ===============*/
+
+.filters__content{
+  margin: 2rem 0 2.5rem;
+  background-color: var(--text-color-lighten);
+  padding: .375rem;
+  border-radius: .75rem;
+  display: flex;
+  justify-content: space-between;
+  column-gap: .5rem;
+}
+
+.filters__button{
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 1rem;
+  color: var(--title-color);
+  font-size: var(--small-font-size);
+  font-family: var(--body-font);
+  font-weight: 500;
+  border-radius: .75rem;
+  cursor: pointer;
+  background-color: transparent;
+  transition: .3s;
+}
+
+.filters__button:hover{
+  background-color: var(--body-color);
+}
+
+/*=============== SOCIAL ===============*/
+
+.instagram{
+  color: #DB2674;
+}
+
+.instagram:hover{
+  color: #a80d50;
+}
+
+.twitter{
+  color: #60A9DE;
+}
+
+.twitter:hover{
+  color: #407499;
+}
+
+.github{
+  color: #131618;
+}
+
+.github:hover{
+  color: #060708;
+}
+
+.discord{
+  color: #5865F2;
+}
+
+.discord:hover{
+  color: #424ecf;
+}
+
+.linkedin{
+  color: #0A66C2;
+}
+
+.linkedin:hover{
+  color: #094e94;
+}
+
+
+.youtube{
+  color: #FF0000;
+}
+
+.youtube:hover{
+  color: #de1f1f;
+}
+
+.whatsapp{
+  color: #36C14A;
+}
+
+.messenger{
+  color: #00B6FF;
+}
+
+.download-button{
+  font-weight: 600;
+}
+
+/*=============== ABOUT ===============*/
+
+.view{
+  color: #fff;
+}
+
+.about{
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+/*=============== PROJECTS ===============*/
+
+.card{
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, .075);
+}
+
+.card-title{
+  color: var(--title-color);
+}
+
+.card-text{
+  color: var(--text-color);
+}
+
+.dark-theme .card{
+  background-color: var(--container-color);
+  box-shadow: none;
+}
+
+.dark-theme .card-title{
+  color: #fff;
+}
+
+.dark-theme .card-text{
+  color: rgba(255, 255, 255, 0.5);
+}
+/*=============== SKILLS COLOR ============*/
+
+.html{
+  color: #FF8340;
+}
+
+.css{
+  color: #228AC6;
+}
+
+.js{
+  color: #F7E018;
+}
+
+.ang{
+  color: #DD0031;
+}
+
+.react{
+  color: #61DBFB;
+}
+
+.sql{
+  color: #FFB900;
+}
+
+.php{
+  color: #4F5B93;
+}
+
+.bootstrap{
+  color: #7609F6;
+}
+
+.python{
+  color: #2C6999;
+}
+
+.nodejs{
+  color: #23B45D;
+}
+
+.ok{
+  color: #28A128;
+}
+
+/*=============== SKILLS ===============*/
+
+.skills__content{
+  row-gap: 3.5rem;
+  justify-content: center;
+  display: flex;
+}
+
+.skills__title{
+  font-size: var(--h3-font-size);
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.Fav{
+  display: flex;
+  column-gap: 3.5rem;
+}
+
+.skills__box{
+  display: flex;
+  justify-content: center;
+}
+
+.skills__group{
+  display: grid;
+  align-content: flex-start;
+  row-gap: 1rem;
+}
+
+.skills_data{
+  display: flex;
+  column-gap: .5rem;
+}
+
+.skills_data i{
+  font-size: 1rem;
+}
+
+.skills__name{
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.skills__level{
+  font-size: var(--smaller-font-size);
+}
+
+/* Hide and show projects & skills */
+
+.filters [data-content]{
+  display: none;
+}
+
+.filters__active[data-content]{
+  display: grid;
+}
+
+/* Activate button filter */
+
+.filter-tab-active{
+  background-color: var(--body-color);
+}
+
+.progress-bar{
+  background-color: #DB190C;
+}
+
+
+/*=============== FOOTER ===============*/
+
+.footer__copy{
+  display: block;
+  margin: 2.5rem 0 2rem;
+  text-align: center;
+  font-size: var(--smaller-font-size);
+  color: var(--text-color);
+  font-weight: 700;
+}
+
+
+/*=============== SCROLL BAR ===============*/
+
+::-webkit-scrollbar{
+  width: .6rem;
+  background-color: hsl(var(--hue), 8%, 66%);
+}
+
+::-webkit-scrollbar-thumb{
+  border-radius: .5rem;
+  background-color: hsl(var(--hue), 8%, 54%);
+}
+
+::-webkit-scrollbar-thumb:hover{
+  background-color: hsl(var(--hue), 8%, 44%);
+}
+
+
+/*=============== BREAKPOINTS ===============*/
+/* For small devices */
+
+@media screen and (max-width: 330px) {
+  .change-theme{
+    margin-right: 20px;
+  }
+  body{
+    text-align: center;
+    margin: 0 auto;
+    padding: 0;
+  }
+  .container{
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin: 0 auto;
+  }
+
+  .profiel__info{
+    column-gap: 1.5rem;
+    margin: 0 auto;
+  }
+
+  .profile__buttons{
+    flex-direction: column;
+    row-gap: 1rem;
+    margin: 0 auto;
+  }
+
+  .skills__box{
+    column-gap: 1rem;
+  }
+}
+
+/* For medium devices */
+
+ @media screen and (min-width: 576px) {
+  .projects__content{
+    grid-template-columns: 332px;
+    justify-content: center;
+  }
+
+  .filters__content{
+    width: 332px;
+    margin: 3rem auto;
+  }
+ }
+
+
+/* For large devices */
+
+@media screen and (min-width: 776px) {
+  .projects__content,
+  .skills__content{
+    grid-template-columns: repeat(1, 332px);
+  }
+
+  .skills__content{
+    justify-content: center;
+    column-gap: 3rem;
+}
+  
+}
